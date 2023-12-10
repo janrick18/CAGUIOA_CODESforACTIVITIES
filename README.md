@@ -1,2 +1,38 @@
 # CODE 1
-Coded
+import java.util.*;
+
+public class AdjacencyList
+{
+    protected static final int condition = 7;
+        private static ArrayList<ArrayList> lists = new ArrayList<>();
+            public static char [] toLists = {'A', 'B', 'C', 'D', 'E', 'F', 'G'};
+            
+    public static void main(String [] args)
+    {        
+        for(int i = 0; i <= condition; i++)
+        {
+            lists.add(new ArrayList<>());
+        }
+        
+        lists.get(0).add('B');lists.get(1).add('A');lists.get(1).add('C');
+        lists.get(2).add('B');lists.get(2).add('E');lists.get(2).add('D');
+        lists.get(3).add('C');lists.get(3).add('E');lists.get(3).add('F');
+        lists.get(3).add('G');lists.get(4).add('C');lists.get(4).add('D');
+        lists.get(4).add('F');lists.get(5).add('E');lists.get(5).add('D');
+        lists.get(6).add('D');
+
+        display(lists);
+    }
+    
+    protected static ArrayList<ArrayList> display(ArrayList<ArrayList> transfer)
+    {
+        int who = 0;
+        System.out.println("Output");
+        for(int what = 0; what < condition; what++, who++)
+        {
+            System.out.println(toLists[who] + ":" + " " + lists.get(what));
+        }
+        return transfer;
+    }
+}
+
