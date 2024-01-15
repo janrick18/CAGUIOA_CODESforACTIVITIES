@@ -1,0 +1,49 @@
+import java.util.*;
+
+public class ChatBot extends Thread
+{
+    protected static final Scanner enter = new Scanner (System.in);
+        public static String communicate;
+        
+    public static String program(String words) throws InterruptedException
+    {
+        if(communicate.equalsIgnoreCase("How") || communicate.equalsIgnoreCase("enroll") || communicate.equalsIgnoreCase("Where") || communicate.equalsIgnoreCase("begin") || communicate.equalsIgnoreCase("start"))
+        {
+            System.out.println("ChatBot:" + " " + "To proceed with the Enrollment, you must follow the series of steps posted with sign posts on the school's ground");
+            Thread.sleep(2000);
+            System.out.println("ChatBot:" + " " + "You will see signs where numbers are printed along with the instructions indicated below those numbers to help guide students on submitting their credentials");
+            Thread.sleep(1000);
+            return "If you find yourself having trouble with following the steps, you may ask any school personnels for clarification, direction and procedures to complete your transactions";
+        }
+        else if (communicate.equalsIgnoreCase("next") || communicate.equalsIgnoreCase("what now")) 
+        {
+            System.out.println("ChatBot:" + " " + "Upon completing the steps, you may proceed to the registrar window just beside the main entrance of the school");
+            Thread.sleep(2000);
+            return "There, you may complete your enrollment by paying school tuition fees";
+        }
+        else
+        {
+            return "I may not understood that statement/word.";
+        }
+    }
+    public static void main(String [] chatBot) throws InterruptedException
+    {
+        
+        System.out.println("Hello, I am the School's ChatBot Program");
+        System.out.println("I am here to help enrollees complete their enrollment");
+        System.out.println("You may Ask anything regarding the procedures.");
+        
+        
+        do
+        {
+            System.out.println("Ask:");
+            communicate = enter.nextLine();
+            System.out.println("ChatBot:" + " " + program(communicate));
+            Thread.sleep(2000);
+ 
+        }while(!communicate.equalsIgnoreCase("No") || !communicate.equalsIgnoreCase("finish") || !communicate.equalsIgnoreCase("over") || !communicate.equalsIgnoreCase("done") || !communicate.equalsIgnoreCase("end") || !communicate.equalsIgnoreCase("goodbye") || !communicate.equalsIgnoreCase("bye"));
+        
+        System.out.println("Program End.");
+        System.exit(0);
+    }
+}
