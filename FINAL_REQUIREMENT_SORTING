@@ -1,0 +1,110 @@
+import java.util.*;
+
+public class SortOut 
+{
+    protected static final Scanner enter = new Scanner(System.in); public static String decide, number;
+            public static int place, example, another, sample; protected static boolean hop; 
+            private static String [] typeWords; public static final StringBuilder display = new StringBuilder();
+ 
+    public static boolean Good(String type)
+    {
+        typeWords = type.split(",");
+        
+        for(String orgList : typeWords)
+        {
+            try
+            {
+                int symbol = Integer.parseInt(orgList.trim());
+                if(symbol < 0 || type.contains("."))
+                {
+                    System.out.println("Error");
+                    return false;
+                }
+            }
+            catch(NumberFormatException | NullPointerException error)
+            {
+                System.out.println("Error");
+                return false;
+            }
+        }
+        
+        return true;
+    }
+    
+    public static void TheBubble(int [] lists)
+    {
+        
+        for(example = 0; example < lists.length - 1; example++)
+        {
+ 
+            for(another = 0; another < lists.length - example - 1; another++)
+            {
+                if(lists[another] > lists[another + 1])                   
+                {
+                   sample = lists[another];
+                   lists[another] = lists[another + 1];
+                   lists[another + 1] = sample;
+
+                }
+            }
+        }
+    }
+    public static void main(String [] sorting)
+    {
+ 
+        System.out.println("Please type a list of signed integers with comma separating after each number:");
+        
+        try
+        {
+            number = enter.nextLine();
+            if(!Good(number))
+            {
+                System.out.println("You have entered the wrong input, please try again:");
+                main(sorting);
+            }
+            else
+            {
+                String [] EnterInput = number.split(",");
+                int [] getLengthOfAllStringInputEntered = new int[EnterInput.length];
+                
+                for(int place = 0; place < EnterInput.length; place++)
+                {
+                    getLengthOfAllStringInputEntered[place] = Integer.parseInt(EnterInput[place]);
+                }
+                TheBubble(getLengthOfAllStringInputEntered);
+                
+                        for (int i = 0; i < getLengthOfAllStringInputEntered.length; i++) 
+                        {
+                        display.append(getLengthOfAllStringInputEntered[i]);
+            
+                            if (i < getLengthOfAllStringInputEntered.length - 1) 
+                            {
+                            display.append(", ");
+                            }
+                        }
+                
+                System.out.println("Sorted By Bubble Algorithm:" + " " + "[" +display.toString()+ "]");
+                System.out.println("\nProgram Ended");
+                System.out.println("\nWould you like to run the program again? Type \"Yes\" or Type Any other Input to Exit");
+                decide = enter.nextLine();
+                if(decide.equalsIgnoreCase("yes"))
+                {
+                    main(sorting);
+                }
+                else
+                {
+                 System.out.println("Exited");
+                 System.exit(0);
+                }
+            }
+            
+        }
+        catch(NumberFormatException | NullPointerException | InputMismatchException wrong)
+        {
+            System.out.println("You have entered the wrong input, please try again:");
+            main(sorting);
+        }
+            
+    }
+
+}
